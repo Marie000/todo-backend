@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req,res) => {
-  res.send('hello server!')
+  res.send('hello server!');
 
 });
 
@@ -21,4 +21,4 @@ mongoose.connect(process.env.MONGODB_URI, () => {
   app.listen(3000, function() {
     console.log('server listening on port 3000');
   });
-})
+});
