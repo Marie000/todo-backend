@@ -28,6 +28,10 @@ app.get('/todo-items', (req, res) => {
 
 // create a todo item
 app.post('/todo-items', (req, res) => {
+  if (req.body.status === 'done') {
+    req.body.completedAt = Date.now();
+  }
+  
   const item = new TodoItem(req.body);
   item.save()
   .then((savedItem) => {
