@@ -14,7 +14,7 @@ This will run the server for the REST API and for the MongoDB database
 
 ## The REST API
 
-main url: 'http://localhost:3000'
+main url: 'http://localhost:9000'
 
 ### Routes:
 #### GET /todo-items
