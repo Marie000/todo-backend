@@ -9,7 +9,7 @@ services:
     environment:
       MONGODB_URI: 'mongodb://mongodb/TodoDB'
     ports:
-      - "3000:3000"
+      - "9000:9000"
     volumes:
       - ./:/usr/src/docker-test
     links:

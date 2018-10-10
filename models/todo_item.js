@@ -14,6 +14,9 @@ const TodoItemSchema = mongoose.Schema({
     enum: ["pending", "in process", "done", "archived"],
     default: "pending"
   },
+  dateDue: {
+    type: Date
+  },
   completedAt: {
     type: Date
   }

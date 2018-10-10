@@ -1,7 +1,7 @@
 # Todo App Backend
 
 This is the backend REST API for the todo app
-<INSERT LINK TO FRONTEND>
+https://github.com/Marie000/todo-frontend
 
 ## Install instructions:
 
@@ -41,6 +41,9 @@ main url: 'http://localhost:3000'
          "completedAt": "2018-10-06T19:21:54.021Z"
       }
      ] 
+
+#### GET /todo-items/file
+  returns a json file containing the list of todo-items
 
 #### POST /todo-items
 

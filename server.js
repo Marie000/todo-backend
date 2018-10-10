@@ -3,10 +3,11 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const TodoItem = require('./models/todo_item');
+const jsonfile = require('jsonfile');
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:9000');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', '*');
@@ -20,6 +21,21 @@ app.get('/todo-items', (req, res) => {
   .then((list) => {
     if (!list) res.status(404).send('no items found');
     res.json(list);
+  })
+  .catch((error) => {
+    res.status(400).send(error);
+  });
+});
+
+app.get('/todo-items/file', (req, res) => {
+  TodoItem.find()
+  .then((list) => {
+    const file = './data.json';
+    return jsonfile.writeFile(file, list);
+  })
+  .then((createdFile) => {
+    res.download( __dirname + "/data.json" );
+
   })
   .catch((error) => {
     res.status(400).send(error);
@@ -60,7 +76,7 @@ app.patch('/todo-items/:id', (req, res) => {
 });
 
 mongoose.connect(process.env.MONGODB_URI, () => {
-  app.listen(3000, () => {
-    console.log('server listening on port 3000');
+  app.listen(9000, () => {
+    console.log('server listening on port 9000');
   });
 });
